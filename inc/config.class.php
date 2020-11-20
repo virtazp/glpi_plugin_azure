@@ -13,7 +13,7 @@ class PluginAzureConfig extends CommonDBTM
     /**
      * ID d'application (client)
      */
-    private $_client_id = 'YOUR-CLIENID-HERE';
+    private $_client_id = 'YOUR-CLIENTID-HERE';
     /**
      * Scope
      */
