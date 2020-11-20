@@ -11,7 +11,7 @@ Un bouton de connexion s'ajoute dans la partie connexion de GLPI. En cliquant de
 Lors de la première connexion, l'utilisateur est automatiquement ajouté dans la base de données de GLPI. Le SSO est activé immédiatement.
 Les sessions sont gérés par des cookies. Les cookies ne contiennent pas d'information sensible, juste un état de connexion.
 
-![Fonctionnement](https://github.com/virtazp/glpi-connect_azure/blob/master/Azure-AD.png)
+![Fonctionnement](https://github.com/virtazp/glpi_plugin_azure/blob/main/Azure-AD.png)
 
 ## Décomposition des fichiers
 
