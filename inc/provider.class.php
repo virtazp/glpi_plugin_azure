@@ -88,7 +88,9 @@ class PluginAzureProvider extends CommonDBTM
       if (version_compare(GLPI_VERSION, '9.3', '>=')) {
          $default_condition = [];
       }
-      if ($user->getFromDBbyEmail($resource_array['upn'], $default_condition)) {
+      if ($user->getFromDBbyEmail($resource_array['email'], $default_condition)) {
+         return $user;
+      }else if ($user->getFromDBbyName($resource_array['name'])) {
          return $user;
       }
 
