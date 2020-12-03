@@ -13,11 +13,6 @@ error_reporting(E_ALL);
 
 include('../../../inc/includes.php');
 
-// Permet de sauvegarder le chemin de redirection
-if (isset($_POST['redirect']) && (strlen($_POST['redirect']) > 0)) {
-   setcookie('redirect', $_POST['redirect'], time() + 30, null, null, false, true);
-}
-
 // Instance de la classe PluginAzureProvider()
 $signon_provider = new PluginAzureProvider();
 
@@ -26,43 +21,8 @@ $signon_provider->checkAuthorization();
 
 if ($signon_provider->login()) {
 
-   if (isset($_COOKIE['redirect']) && (strlen($_COOKIE['redirect']) > 0)) {
-
-      $redirect = $_COOKIE['redirect'];
-
-      global $CFG_GLPI;
-      if (!Session::getLoginUserID()) {
-         return false;
-      }
-
-      if (!$redirect) {
-         if (isset($_POST['redirect']) && (strlen($_POST['redirect']) > 0)) {
-            $redirect = $_POST['redirect'];
-         } else if (isset($_GET['redirect']) && strlen($_GET['redirect']) > 0) {
-            $redirect = $_GET['redirect'];
-         }
-      }
-
-      //Direct redirect
-      if ($redirect) {
-         Toolbox::manageRedirect($redirect);
-      }
-
-      // Rediriger vers Command Central si ce n'est pas uniquement postérieur
-      if (Session::getCurrentInterface() == "helpdesk") {
-         if ($_SESSION['glpiactiveprofile']['create_ticket_on_login']) {
-            Html::redirect($CFG_GLPI['root_doc'] . "/front/helpdesk.public.php?create_ticket=1");
-         }
-         Html::redirect($CFG_GLPI['root_doc'] . "/front/helpdesk.public.php");
-      } else {
-         if ($_SESSION['glpiactiveprofile']['create_ticket_on_login']) {
-            Html::redirect(Ticket::getFormURL());
-         }
-         Html::redirect($CFG_GLPI['root_doc'] . "/front/central.php");
-      }
-   } else {
-      Auth::redirectIfAuthenticated();
-   }
+   Auth::redirectIfAuthenticated();
+   
 } else {
    Html::nullHeader("Login", $CFG_GLPI["root_doc"] . '/index.php');
    echo '<div class="center b">' . __('User not authorized to connect in GLPI') . '<br><br>';

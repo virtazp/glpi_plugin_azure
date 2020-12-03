@@ -9,7 +9,6 @@ Au préalable, il faut inscrire l'application dans Azure : https://docs.microsof
 
 Un bouton de connexion s'ajoute dans la partie connexion de GLPI. En cliquant dessus, une requête est envoyée pour pouvoir se connecter.
 Lors de la première connexion, l'utilisateur est automatiquement ajouté dans la base de données de GLPI. Le SSO est activé immédiatement.
-Les sessions sont gérés par des cookies. Les cookies ne contiennent pas d'information sensible, juste un état de connexion.
 
 ![Fonctionnement](https://github.com/virtazp/glpi_plugin_azure/blob/main/Azure-AD.png)
 
@@ -39,9 +38,6 @@ Détermine si il faut afficher le formulaire de connexion ou rediriger vers la p
 Classe qui gère la connexion :
 - Elle affiche le formulaire Office pour la saisie des identifiants
 - Connecte un utilisateur à GLPI et vérifie la validité du token d'autorisation.
-
-La fonction static logoutCookie() permet d'effacer le cookie lors de la déconnexion. L'appelle de la fonction dans le fichier glpi/front/logout.php est recommandé car sinon vous ne pourrait plus vous déconnecter. 
-Cette fonction doit être appellé "PluginAzureProvider::logoutCookie();" dans le fichier front/logout.php juste avant la dernière ligne du fichier "Html::redirect($CFG_GLPI["root_doc"]."/index.php".$toADD);"
 
 Cette classe utilise la bibliothèque PHP-JWT pour le décodage du jeton. https://github.com/firebase/php-jwt
 Avant d'installer le plugin dans le tableau de bord de GLPI, il faut executer la commande dans la dossier du plugin: composer require firebase/php-jwt , pour l'installation des paquets. Il faut aussi au préalable avoir composer d'installé dans son environnement. https://getcomposer.org/download/

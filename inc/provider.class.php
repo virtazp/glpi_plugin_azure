@@ -70,10 +70,6 @@ class PluginAzureProvider extends CommonDBTM
       $auth->user->fields['authtype'] = Auth::DB_GLPI;
       Session::init($auth);
 
-      // Création cookie
-      setcookie('auth', true, time() + 3600 * 24 * 30, '/', null, false, true);
-      $_COOKIE['auth'] = true;
-
       return $auth->auth_succeded;
    }
 
@@ -186,18 +182,6 @@ class PluginAzureProvider extends CommonDBTM
          return false;
       } else {
          return true;
-      }
-   }
-
-   /**
-    * Adding a static method of the Azure plugin for the file glpi/front/logout.php
-    * line 83 : PluginAzureProvider::logoutCookie();
-    */
-   static function logoutCookie()
-   {
-      if (isset($_COOKIE['auth'])) {
-         setcookie('auth', '', time() - 3600, '/');
-         unset($_COOKIE['auth']);
       }
    }
 }
