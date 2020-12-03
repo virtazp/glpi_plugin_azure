@@ -1,5 +1,8 @@
 {
     "require-dev": {
         "glpi-project/coding-standard": "^0.7.1"
+    },
+    "require": {
+        "firebase/php-jwt": "^5.2"
     }
 }

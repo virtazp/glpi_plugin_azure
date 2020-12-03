@@ -1,94 +1,160 @@
-[
-    {
-        "name": "glpi-project/coding-standard",
-        "version": "0.7.1",
-        "version_normalized": "0.7.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/glpi-project/coding-standard.git",
-            "reference": "1cef37d764aecf8fd7d5d167db25da97e289cb03"
+{
+    "packages": [
+        {
+            "name": "firebase/php-jwt",
+            "version": "v5.2.0",
+            "version_normalized": "5.2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "feb0e820b8436873675fd3aca04f3728eb2185cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/feb0e820b8436873675fd3aca04f3728eb2185cb",
+                "reference": "feb0e820b8436873675fd3aca04f3728eb2185cb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.8 <=9"
+            },
+            "time": "2020-03-25T18:49:23+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Firebase\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Neuman Vong",
+                    "email": "neuman+pear@twilio.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anant Narayanan",
+                    "email": "anant@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+            "homepage": "https://github.com/firebase/php-jwt",
+            "keywords": [
+                "jwt",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/firebase/php-jwt/issues",
+                "source": "https://github.com/firebase/php-jwt/tree/master"
+            },
+            "install-path": "../firebase/php-jwt"
         },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/glpi-project/coding-standard/zipball/1cef37d764aecf8fd7d5d167db25da97e289cb03",
-            "reference": "1cef37d764aecf8fd7d5d167db25da97e289cb03",
-            "shasum": ""
+        {
+            "name": "glpi-project/coding-standard",
+            "version": "0.7.1",
+            "version_normalized": "0.7.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/glpi-project/coding-standard.git",
+                "reference": "1cef37d764aecf8fd7d5d167db25da97e289cb03"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/glpi-project/coding-standard/zipball/1cef37d764aecf8fd7d5d167db25da97e289cb03",
+                "reference": "1cef37d764aecf8fd7d5d167db25da97e289cb03",
+                "shasum": ""
+            },
+            "require": {
+                "squizlabs/php_codesniffer": "^3.3"
+            },
+            "time": "2018-06-07T08:45:05+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Teclib'",
+                    "email": "glpi@teclib.com",
+                    "homepage": "https://teclib.com"
+                }
+            ],
+            "description": "GLPI PHP CodeSniffer Coding Standard",
+            "keywords": [
+                "codesniffer",
+                "glpi",
+                "phpcs"
+            ],
+            "install-path": "../glpi-project/coding-standard"
         },
-        "require": {
-            "squizlabs/php_codesniffer": "^3.3"
-        },
-        "time": "2018-06-07T08:45:05+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0-or-later"
-        ],
-        "authors": [
-            {
-                "name": "Teclib'",
-                "email": "glpi@teclib.com",
-                "homepage": "https://teclib.com"
-            }
-        ],
-        "description": "GLPI PHP CodeSniffer Coding Standard",
-        "keywords": [
-            "codesniffer",
-            "glpi",
-            "phpcs"
-        ]
-    },
-    {
-        "name": "squizlabs/php_codesniffer",
-        "version": "3.4.2",
-        "version_normalized": "3.4.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-            "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
-            "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
-            "shasum": ""
-        },
-        "require": {
-            "ext-simplexml": "*",
-            "ext-tokenizer": "*",
-            "ext-xmlwriter": "*",
-            "php": ">=5.4.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
-        },
-        "time": "2019-04-10T23:49:02+00:00",
-        "bin": [
-            "bin/phpcs",
-            "bin/phpcbf"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Greg Sherwood",
-                "role": "lead"
-            }
-        ],
-        "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
-        "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
-        "keywords": [
-            "phpcs",
-            "standards"
-        ]
-    }
-]
+        {
+            "name": "squizlabs/php_codesniffer",
+            "version": "3.4.2",
+            "version_normalized": "3.4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
+                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*",
+                "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
+            },
+            "time": "2019-04-10T23:49:02+00:00",
+            "bin": [
+                "bin/phpcs",
+                "bin/phpcbf"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
+            "keywords": [
+                "phpcs",
+                "standards"
+            ],
+            "install-path": "../squizlabs/php_codesniffer"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": [
+        "glpi-project/coding-standard",
+        "squizlabs/php_codesniffer"
+    ]
+}
