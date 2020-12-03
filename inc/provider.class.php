@@ -98,9 +98,10 @@ class PluginAzureProvider extends CommonDBTM
          $tokenAPI = base_convert(hash('sha256', time() . mt_rand()), 16, 36);
          $tokenPersonnel = base_convert(hash('sha256', time() . mt_rand()), 16, 36);
 
-         $userPost['name'] = preg_split('/ /', $resource_array['name'])[0];
+         $userPost['name'] = $resource_array['name'];
+         $userPost['realname'] = preg_split('/ /', $resource_array['name'])[1];
          $userPost['_useremails'][-1] = $resource_array['email'];
-         $userPost['firstname'] = preg_split('/ /', $resource_array['name'])[1];
+         $userPost['firstname'] = preg_split('/ /', $resource_array['name'])[0];
          $userPost['api_token'] = $tokenAPI;
          $userPost['personal_token'] = $tokenPersonnel;
          $userPost['add'] = "Ajouter";
