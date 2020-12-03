@@ -19,6 +19,8 @@ $signon_provider = new PluginAzureProvider();
 // Affichage de la fenêtre de connexion de Microsoft
 $signon_provider->checkAuthorization();
 
+$REDIRECT = "";
+
 if ($signon_provider->login()) {
 
    Auth::redirectIfAuthenticated();
