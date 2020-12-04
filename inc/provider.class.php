@@ -56,7 +56,6 @@ class PluginAzureProvider extends CommonDBTM
    public function login()
    {
       $user = $this->findUser();
-
       if (!$user) {
          return false;
       }
@@ -77,7 +76,6 @@ class PluginAzureProvider extends CommonDBTM
    {
 
       $resource_array = $this->getResourceOwner();
-
       if (!$resource_array) {
          return false;
       }
@@ -106,9 +104,44 @@ class PluginAzureProvider extends CommonDBTM
          $userPost['firstname'] = preg_split('/ /', $resource_array['name'])[0];
          $userPost['api_token'] = $tokenAPI;
          $userPost['personal_token'] = $tokenPersonnel;
+         $userPost['is_active'] = 1;
          $userPost['add'] = "Ajouter";
-
          $user->add($userPost);
+
+         $profils = 0;
+         // Vérification profils par défaut existe
+         // Si aucun profil par défaut existe, l'utilisateur ne pourra se connecter.
+         // Dans ce cas, on récupère un profil et une entitée et on lui affecte ces valeurs
+         // L'administrateur pourra modifier ces valeurs plus tard.
+         if (0 == Profile::getDefault()) {
+            // Pas de profils par défaut
+            // Récupération des profils et affectation
+            global $DB;
+
+            $datasProfiles = [];
+            foreach ($DB->request('glpi_profiles') as $data) {
+               array_push($datasProfiles, $data);
+            }
+            $datasEntities = [];
+            foreach ($DB->request('glpi_entities') as $data) {
+               array_push($datasEntities, $data);
+            }
+            if (count($datasProfiles) > 0 && count($datasEntities) > 0) {
+               $profils = $datasProfiles[0]['id'];
+               $entitie = $datasEntities[0]['id'];
+
+               $profile   = new Profile_User();
+               $userProfile['users_id'] = intval($user->fields['id']);
+               $userProfile['entities_id'] = intval($entitie);
+               $userProfile['is_recursive'] = 0;
+               $userProfile['profiles_id'] = intval($profils);
+               $userProfile['add'] = "Ajouter";
+               $profile->add($userProfile);
+            } else {
+               return false;
+            }
+         }
+         
          return $user;
       } catch (\Exception $ex) {
          return false;
