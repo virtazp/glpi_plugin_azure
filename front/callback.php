@@ -21,8 +21,13 @@ $signon_provider->checkAuthorization();
 
 $REDIRECT = "";
 
-if ($signon_provider->login()) {
+if(isset($_COOKIE['redirect']) && (strlen($_COOKIE['redirect']) > 0)) {
+   $REDIRECT = $_COOKIE['redirect'];
+   $_GET['redirect'] = $_COOKIE['redirect'];
+}
 
+if ($signon_provider->login()) {
+   setcookie('redirect', '', 0 , '/');
    Auth::redirectIfAuthenticated();
    
 } else {

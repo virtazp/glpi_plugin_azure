@@ -4,6 +4,10 @@ function plugin_azure_display_login()
 {
    global $CFG_GLPI;
 
+   if (isset($_GET['redirect']) && strlen($_GET['redirect']) > 0 && !isset($_COOKIE['redirect']) ) {
+      setcookie('redirect',$_GET['redirect'], 0 , '/');
+   }
+
    $url = $CFG_GLPI['root_doc'] . '/plugins/azure/front/callback.php';
    echo ('<form action ="' . $url . '" method="post" id="connexionSubmit">');
    echo ('<a class="azure" href="#" style="color: white">Connexion avec Office 365<br><br><img src="' . $CFG_GLPI['root_doc'] . '/plugins/azure/office365.png" style="width:100px" /></a>');
